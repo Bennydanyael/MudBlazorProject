@@ -9,8 +9,7 @@ namespace MudBlazorProject
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
-            builder
-                .UseMauiApp<App>()
+            builder.UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -18,7 +17,6 @@ namespace MudBlazorProject
 
             // Add device-specific services used by the MudBlazorProject.Shared project
             builder.Services.AddSingleton<IFormFactor, FormFactor>();
-
             builder.Services.AddMauiBlazorWebView();
 
 #if DEBUG

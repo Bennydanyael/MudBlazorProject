@@ -1,6 +1,116 @@
 ﻿@inherits LayoutComponentBase
+@using MudBlazorProject.Shared.ViewModels.Account;
+@using Microsoft.AspNetCore.Components.Authorization;
+@using MudBlazorProject.Shared.Services.Account
 
-<div class="page">
+@inject NavigationManager _navigate;
+@* @inject CustomAuthenticationStateProvider _authentication; *@
+
+<MudThemeProvider />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+@*     <AuthorizeView>
+        <Authorized> *@
+            <MudAppBar>
+                <MudIconButton Icon="@Icons.Material.Filled.Menu" 
+                Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())"></MudIconButton>
+                Base App
+                <MudSpacer />
+                <MudStack>
+                    <div Class="d-flex justify-space-around flex-wrap mt-2">
+                    <MudThemeProvider @bind-IsDarkMode="@_isDarkMode" Theme="_customTheme" />
+                    <MudToggleIconButton @bind-Toggled="@_isDarkMode"
+                    Icon="@Icons.Material.Filled.DarkMode"
+                    Color="@Color.Default"
+                    ToggledIcon="@Icons.Material.Filled.WbSunny"
+                    ToggledColor="@Color.Default" />
+                    </div>
+                </MudStack>
+                <MudStack Class="col-md-4">
+                    <div Class="d-flex justify-space-around flex-wrap mt-4">
+                        <MudStack Class="col-md-1">
+                        <MudBadge Content="100" Color="Color.Primary" Overlap="true" Class="mx-6 my-4">
+                            <MudIcon Icon="@Icons.Material.Filled.Email" Color="Color.Default" />
+                    </MudBadge>
+                </MudStack>
+                        <MudStack Class="col-md-3">
+                            <MudNavLink Href="/" onclick="(() => Logout())" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Logout">Logout</MudNavLink>
+                            </MudStack>
+                    </div>
+                </MudStack>
+                @*    <NotAuthorized>
+            <MudStack>
+                <MudNavLink Href="/Login" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Login">Login</MudNavLink>
+            </MudStack>
+            </NotAuthorized> *@
+            </MudAppBar>
+   @*      </Authorized>
+    </AuthorizeView> *@
+@*     <AuthorizeView>
+        <Authorized> *@
+            <MudDrawer @bind-Open="@_drawerOpen" Elevation="20" Anchor="Anchor.Left">
+                <MudDrawerHeader>
+                    <MudText Typo="Typo.h4">Base App</MudText>
+                </MudDrawerHeader>
+                <MudDrawerContainer>
+                    <NavMenu />
+                </MudDrawerContainer>
+            </MudDrawer>
+            <MudMainContent>
+                <div class="container" style="margin-left:10px">
+                    @Body
+                </div>
+            </MudMainContent>
+  @*       </Authorized>
+    </AuthorizeView> *@
+</MudLayout>
+
+@code{
+    private bool _drawerOpen = false;
+    private bool _isDarkMode;
+
+    private UserViewModel _user;
+    protected override async Task OnInitializedAsync()
+    {
+
+        // await sessionStorage.SetItemAsync("name", "John Smith");
+        // var name = await sessionStorage.GetItemAsync<string>("name");
+        _user = new UserViewModel();
+        // if (_authentication.IsAuthentication()) _navigate.NavigateTo("/Login", true);
+        await base.OnInitializedAsync();
+    }
+    private void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+
+    MudTheme _customTheme = new MudTheme()
+    {
+        PaletteLight = new PaletteLight()
+        {
+            Primary = Colors.DeepPurple.Darken2,
+            Secondary = Colors.Green.Accent4,
+            AppbarBackground = Colors.BlueGray.Darken3
+        },
+        PaletteDark = new PaletteDark()
+        {
+            Primary = Colors.DeepPurple.Darken4,
+            Secondary = Colors.Green.Accent4,
+            AppbarBackground = Colors.BlueGray.Darken3
+        }
+    };
+
+    public void Logout()
+    {
+        // ((CustomAuthenticationStateProvider)_authenticationStateProvider).Logout();
+        // _navigate.NavigateTo("/Login", true);
+    }
+}
+
+@* <div class="page">
     <div class="sidebar">
         <NavMenu />
     </div>
@@ -21,3 +131,4 @@
     <a href="." class="reload">Reload</a>
     <span class="dismiss">🗙</span>
 </div>
+ *@

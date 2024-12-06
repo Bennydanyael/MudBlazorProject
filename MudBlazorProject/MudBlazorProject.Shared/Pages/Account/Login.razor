@@ -1,0 +1,98 @@
+﻿@page "/login"
+
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
+@using MudBlazorProject.Shared.Layout
+@using MudBlazorProject.Shared.ViewModels.Account
+
+@layout LoginLayout
+@attribute [StreamRendering]
+@attribute [AllowAnonymous]
+@* @inject CustomAuthenticationStateProvider AuthenticationStateProvider *@
+@inject NavigationManager _navigate
+@* @inject Blazored.SessionStorage.ISessionStorageService _sessionStorage *@
+
+<PageTitle>Login</PageTitle>
+
+
+<div class="col-12 row">
+    <div class="col-6 card" style="border-right:groove">
+		<img src="~/src/logo/oip.jpg" width="100%" height="400px"/>
+    </div>
+	<div class="col-6 card" style="align-items:center;">
+        <MudTabs Elevation="1" Rounded="false" PanelClass="pa-6" style="align-items:center">
+            <MudTabPanel Text="Login" ToolTip="Welcome back!" Style="width:50%;border:groove;">
+                 <MudStack Class="justify-space-between mud-width-full">
+            <MudCard Style="width:500px;glyph-orientation-horizontal:revert-layer">
+                        <MudCardContent>
+                             <MudForm Model="@_user" OnValidSubmit="@ValidateUser()">
+                                <MudTextField @bind-value="@_user.UserName" Label="Username" Variant="Variant.Text"></MudTextField>
+                                    <MudTextField @bind-value="@_user.Password" Label="Password" Variant="Variant.Text" InputType="@InputType.Password"></MudTextField>
+                            </MudForm>
+                            </MudCardContent>
+                            <MudCardActions>
+                                @* <MudButton Variant="Variant.Text" Color="Color.Success">Login</MudButton> *@
+                                <MudButton Disabled="@_processing" OnClick="LoginProcess" Variant="Variant.Filled" Color="Color.Success">
+    @if (_processing)
+                                {
+                                    <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true"/>
+                                    <MudText Class="ms-2">Processing</MudText>
+                                }
+                                else
+                                {
+                                    <MudText>Login</MudText>
+                                }
+                            </MudButton>
+                        </MudCardActions>
+                    </MudCard>
+                </MudStack>
+            </MudTabPanel>
+            <MudTabPanel Text="Register" ToolTip="Start with Registration!" Style="width:50%;border:groove;">
+                <MudStack Class="justify-space-between mud-width-full">
+                    <MudCard Style="width:500px;">
+                        <MudCardContent>
+                            <MudForm Model="@_user" OnValidSubmit="@ValidateUser()">
+                                <MudTextField @bind-Value="@_user.Email" Label="Email" Variant="Variant.Text"></MudTextField>
+                                <MudTextField @bind-Value="@_user.UserName" Label="Username" Variant="Variant.Text"></MudTextField>
+                                <MudTextField @bind-Value="@_user.Password" Label="Password" Variant="Variant.Text" InputType="@InputType.Password" Adornment="Adornment.End"></MudTextField>
+                            </MudForm>
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudButton Variant="Variant.Text" Color="Color.Primary" Adornment="Adornment.End">Submit</MudButton>
+                        </MudCardActions>
+                    </MudCard>
+                </MudStack>
+            </MudTabPanel>
+        </MudTabs>
+    </div>
+
+</div>
+
+
+
+@code {
+    private bool _processing = false;
+    private UserViewModel _user;
+    protected override Task OnInitializedAsync()
+    {
+        _user = new UserViewModel();
+        return base.OnInitializedAsync();
+    }
+
+    public async Task<bool> ValidateUser()
+    {
+        // await ((CustomAuthenticationStateProvider)AuthenticationStateProvider).NotifAuthenticated(_user.Email);
+        // _navigate.NavigateTo("/");
+
+        // await _sessionStorage.SetItemAsync("Email", _user.UserName);
+
+        return await Task.FromResult(true);
+    }
+
+    async Task LoginProcess()
+    {
+        _processing = true;
+        await Task.Delay(2000);
+        _processing = false;
+    }
+}

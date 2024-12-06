@@ -1,4 +1,4 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@* <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">MudBlazorProject</a>
     </div>
@@ -26,5 +26,11 @@
             </NavLink>
         </div>
     </nav>
-</div>
+</div> *@
+
+<MudNavMenu>
+    <MudNavLink Href="/" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.OtherHouses">Home</MudNavLink>
+    <MudNavLink Href="/Counter" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Calculate">Counter</MudNavLink>
+    <MudNavLink Href="/Weather" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.CloudSync">Weather</MudNavLink>
+</MudNavMenu>
 
