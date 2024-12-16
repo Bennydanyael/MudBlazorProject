@@ -1,12 +1,13 @@
 ﻿@page "/"
 @using MudBlazorProject.Shared.Services
+@using MudBlazor.Services
 @inject IFormFactor FormFactor
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+<MudText Typo="Typo.h3">Hello, world!</MudText>
 
-Welcome to your new app running on <em>@factor</em> using <em>@platform</em>.
+<MudText Class="container">Welcome to your new app running on <em>@factor</em> using <em>@platform</em>.</MudText>
 
 @code {
     private string factor => FormFactor.GetFormFactor();

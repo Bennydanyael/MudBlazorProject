@@ -1,0 +1,143 @@
+﻿@page "/organization/structure"
+
+@* 
+<MudStack Class="container">
+<MudButton Style="text-align:center" FullWidth="true" Variant="Variant.Filled">Primata</MudButton>
+<MudTimeline TimelineAlign="_timelineAlign" title="Primata">
+    <MudTimelineItem Color="Color.Info" Size="Size.Small" Style="text-align:center">
+        <ItemContent>
+            <MudCard>
+                    <MudCardHeader>
+                        <MudText Color="Color.Info" Typo="Typo.h6" GutterBottom="true" Style="text-align:justify">President Director</MudText>
+                    </MudCardHeader>
+                    <MudCardMedia Image="images/OIP.jpg" Height="100" />
+                    <MudCardContent>
+                        <MudText Color="Color.Info" Typo="Typo.h6" GutterBottom="true">Atom Towns</MudText>
+                        <MudText Typo="Typo.h5">Old Paint</MudText>
+                        <MudText Typo="Typo.body2">Old paint found on a stone house door.</MudText>
+                        <MudText Typo="Typo.body2">Construction of the town of Pripyat, one of 9 “atom towns” begins, to be inhabited by future employees of the nuclear power plants.</MudText>
+                    </MudCardContent>
+            </MudCard>
+        </ItemContent>
+    </MudTimelineItem>
+        <MudTimelineItem id="aa" Color="Color.Info" Size="Size.Small" Style="text-align:center">
+            <ItemContent>
+                <MudCard>
+                    <MudCardHeader>
+                        <MudText Color="Color.Info" Typo="Typo.h6" GutterBottom="true" Style="text-align:justify">HR Director</MudText>
+                    </MudCardHeader>
+                    <MudCardMedia Image="images/OIP.jpg" Height="100" />
+                    <MudCardContent>
+                        <MudText Color="Color.Info" Typo="Typo.h6" GutterBottom="true">Willy Shen</MudText>
+                        <MudText Typo="Typo.h5">Level 3</MudText>
+                        <MudText Typo="Typo.body2">The first of the Chernobyl Nuclear Power Plants four reactors is ready to operate followed by number 2 in 1978..</MudText>
+                    </MudCardContent>
+                </MudCard>
+            </ItemContent>
+        </MudTimelineItem>
+        <MudTimelineItem id="aa" Color="Color.Info" Size="Size.Small" Style="text-align:center">
+            <ItemContent>
+                <MudCard>
+                    <MudCardHeader>
+                        <MudText Color="Color.Info" Typo="Typo.h6" GutterBottom="true" Style="text-align:justify">HR Manager</MudText>
+                    </MudCardHeader>
+                    <MudCardMedia Image="images/OIP.jpg" Height="100" />
+                    <MudCardContent>
+                        <MudText Color="Color.Info" Typo="Typo.h6" GutterBottom="true">Phou</MudText>
+                        <MudText Typo="Typo.h5">Level 4</MudText>
+                        <MudText Typo="Typo.body2">Pripyat officially proclaimed as a city.<br />The Chernobyl Atomic Power Station reaches its first 10 billion kilowatt-hours of electical output.</MudText>
+                    </MudCardContent>
+                </MudCard>
+            </ItemContent>
+        </MudTimelineItem>
+</MudTimeline>
+</MudStack>
+
+@code {
+    private TimelineAlign _timelineAlign { get; set; } = TimelineAlign.Default;
+}
+ *@
+ 
+<div class="container">
+    <h1 class="level-1 rectangle">CEO</h1>
+    <ol class="level-2-wrapper">
+        <li>
+            <h2 class="level-2 rectangle">Director A</h2>
+            <ol class="level-3-wrapper">
+                <li>
+                    <h3 class="level-3 rectangle">Manager A</h3>
+                    <ol class="level-4-wrapper">
+                        <li>
+                            <h4 class="level-4 rectangle">Person A</h4>
+                        </li>
+                        <li>
+                            <h4 class="level-4 rectangle">Person B</h4>
+                        </li>
+                        <li>
+                            <h4 class="level-4 rectangle">Person C</h4>
+                        </li>
+                        <li>
+                            <h4 class="level-4 rectangle">Person D</h4>
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <h3 class="level-3 rectangle">Manager B</h3>
+                    <ol class="level-4-wrapper">
+                        <li>
+                            <h4 class="level-4 rectangle">Person A</h4>
+                        </li>
+                        <li>
+                            <h4 class="level-4 rectangle">Person B</h4>
+                        </li>
+                        <li>
+                            <h4 class="level-4 rectangle">Person C</h4>
+                        </li>
+                        <li>
+                            <h4 class="level-4 rectangle">Person D</h4>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        </li>
+        <li>
+            <h2 class="level-2 rectangle">Director B</h2>
+            <ol class="level-3-wrapper">
+                <li>
+                    <h3 class="level-3 rectangle">Manager C</h3>
+                    <ol class="level-4-wrapper">
+                        <li>
+                            <h4 class="level-4 rectangle">Person A</h4>
+                        </li>
+                        <li>
+                            <h4 class="level-4 rectangle">Person B</h4>
+                        </li>
+                        <li>
+                            <h4 class="level-4 rectangle">Person C</h4>
+                        </li>
+                        <li>
+                            <h4 class="level-4 rectangle">Person D</h4>
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <h3 class="level-3 rectangle">Manager D</h3>
+                    <ol class="level-4-wrapper">
+                        <li>
+                            <h4 class="level-4 rectangle">Person A</h4>
+                        </li>
+                        <li>
+                            <h4 class="level-4 rectangle">Person B</h4>
+                        </li>
+                        <li>
+                            <h4 class="level-4 rectangle">Person C</h4>
+                        </li>
+                        <li>
+                            <h4 class="level-4 rectangle">Person D</h4>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        </li>
+    </ol>
+</div>

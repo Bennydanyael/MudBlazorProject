@@ -29,8 +29,23 @@
 </div> *@
 
 <MudNavMenu>
-    <MudNavLink Href="/" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.OtherHouses">Home</MudNavLink>
-    <MudNavLink Href="/Counter" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Calculate">Counter</MudNavLink>
-    <MudNavLink Href="/Weather" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.CloudSync">Weather</MudNavLink>
+    <MudNavLink Href="/" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.OtherHouses"/>
+    <MudNavLink onclick="(() => OpenMenu())" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Calculate"/>
+    <MudNavLink Href="/Weather" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.CloudSync"/>
+    <MudNavLink Href="/Organization/Structure" Match="NavLinkMatch.Prefix" Icon="@Icons.Custom.Brands.Awesome"/>
+    <MudMenu AnchorOrigin="Origin.TopCenter" Icon="@Icons.Material.Filled.Settings" Color="Color.Primary" AriaLabel="Open user menu">
+        <MudMenuItem>Organization Structure</MudMenuItem>
+        <MudMenuItem>Company</MudMenuItem>
+        <MudMenuItem>Company Policy</MudMenuItem>
+    </MudMenu>
 </MudNavMenu>
 
+
+@code {
+    private bool _drawerOpen = false;
+
+    private void OpenMenu()
+    {
+        _drawerOpen = true;
+    }
+}

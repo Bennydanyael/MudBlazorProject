@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using MudBlazor.Services;
 using MudBlazorProject.Services;
 using MudBlazorProject.Shared.Services;
 
@@ -18,11 +19,11 @@ namespace MudBlazorProject
             // Add device-specific services used by the MudBlazorProject.Shared project
             builder.Services.AddSingleton<IFormFactor, FormFactor>();
             builder.Services.AddMauiBlazorWebView();
-
 #if DEBUG
             builder.Services.AddBlazorWebViewDeveloperTools();
             builder.Logging.AddDebug();
 #endif
+            builder.Services.AddMudServices();
 
             return builder.Build();
         }

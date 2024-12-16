@@ -13,3 +13,50 @@
     </BlazorWebView>
 
 </ContentPage>
+
+<!--<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MudBlazorProject"
+            xmlns:views="clr-namespace:MudBlazorProject.Shared.Pages;assembly=MudBlazorProject.Shared"
+            xmlns:viewsAccount="clr-namespace:MudBlazorProject.Shared.Pages.Account;assembly=MudBlazorProject.Shared"
+            xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+             x:Class="MudBlazorProject.MainPage"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <ContentPage Title="Home">
+        <BlazorWebView HostPage="wwwroot/index.html">
+            <BlazorWebView.RootComponents>
+                <RootComponent Selector="#app" ComponentType="{x:Type views:Home}" />
+            </BlazorWebView.RootComponents>
+        </BlazorWebView>
+    </ContentPage>
+    <ContentPage Title="Counter">
+        <BlazorWebView HostPage="wwwroot/index.html">
+            <BlazorWebView.RootComponents>
+                <RootComponent Selector="#app" ComponentType="{x:Type views:Counter}" />
+            </BlazorWebView.RootComponents>
+        </BlazorWebView>
+    </ContentPage>
+    <ContentPage Title="Weather">
+        <BlazorWebView HostPage="wwwroot/index.html">
+            <BlazorWebView.RootComponents>
+                <RootComponent Selector="#app" ComponentType="{x:Type views:Weather}" />
+            </BlazorWebView.RootComponents>
+        </BlazorWebView>
+    </ContentPage>
+    --><!--<ContentPage Title="Leave">
+        <BlazorWebView HostPage="wwwroot/index.html">
+            <BlazorWebView.RootComponents>
+                <RootComponent Selector="#app" ComponentType="{x:Type views:Leave}" />
+            </BlazorWebView.RootComponents>
+        </BlazorWebView>
+    </ContentPage>--><!--
+    <ContentPage Title="Login">
+        <BlazorWebView HostPage="wwwroot/index.html">
+            <BlazorWebView.RootComponents>
+                <RootComponent Selector="#app" ComponentType="{x:Type viewsAccount:Login}" />
+            </BlazorWebView.RootComponents>
+        </BlazorWebView>
+    </ContentPage>
+</TabbedPage>-->

@@ -2,9 +2,11 @@
 @using MudBlazorProject.Shared.ViewModels.Account;
 @using Microsoft.AspNetCore.Components.Authorization;
 @using MudBlazorProject.Shared.Services.Account
+@using Microsoft.AspNetCore.Components;
 
 @inject NavigationManager _navigate;
-@* @inject CustomAuthenticationStateProvider _authentication; *@
+@* @inject CustomAuthenticationStateProvider _authentication;
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage *@
 
 <MudThemeProvider />
 <MudPopoverProvider />
@@ -12,80 +14,96 @@
 <MudSnackbarProvider />
 
 <MudLayout>
-@*     <AuthorizeView>
+    @*     <AuthorizeView>
         <Authorized> *@
-            <MudAppBar>
-                <MudIconButton Icon="@Icons.Material.Filled.Menu" 
-                Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())"></MudIconButton>
-                Base App
-                <MudSpacer />
-                <MudStack>
-                    <div Class="d-flex justify-space-around flex-wrap mt-2">
-                    <MudThemeProvider @bind-IsDarkMode="@_isDarkMode" Theme="_customTheme" />
-                    <MudToggleIconButton @bind-Toggled="@_isDarkMode"
-                    Icon="@Icons.Material.Filled.DarkMode"
-                    Color="@Color.Default"
-                    ToggledIcon="@Icons.Material.Filled.WbSunny"
-                    ToggledColor="@Color.Default" />
-                    </div>
-                </MudStack>
-                <MudStack Class="col-md-4">
-                    <div Class="d-flex justify-space-around flex-wrap mt-4">
-                        <MudStack Class="col-md-1">
-                        <MudBadge Content="100" Color="Color.Primary" Overlap="true" Class="mx-6 my-4">
-                            <MudIcon Icon="@Icons.Material.Filled.Email" Color="Color.Default" />
+    <MudAppBar>
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" 
+        Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())"></MudIconButton>
+        <MudSpacer />
+        <MudStack>
+            <div Class="d-flex justify-space-around flex-wrap mt-2">
+                <MudThemeProvider @bind-IsDarkMode="@_isDarkMode" Theme="_customTheme" />
+                <MudToggleIconButton @bind-Toggled="@_isDarkMode"
+                Icon="@Icons.Material.Filled.DarkMode"
+                Color="@Color.Default"
+                ToggledIcon="@Icons.Material.Filled.WbSunny"
+                ToggledColor="@Color.Default" />
+            </div>
+        </MudStack>
+        <MudStack Class="col-md-4">
+            <div Class="d-flex justify-space-around flex-wrap mt-4">
+                <MudStack Class="col-md-1">
+                    <MudBadge Content="100" Color="Color.Primary" Overlap="true" Class="mx-6 my-4">
+                        <MudIcon Icon="@Icons.Material.Filled.Email" Color="Color.Default" />
                     </MudBadge>
                 </MudStack>
-                        <MudStack Class="col-md-3">
-                            <MudNavLink Href="/" onclick="(() => Logout())" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Logout">Logout</MudNavLink>
-                            </MudStack>
-                    </div>
+                <MudStack Class="col-md-3">
+                    <MudNavLink onclick="(() => Logout())" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Logout">Logout</MudNavLink>
                 </MudStack>
-                @*    <NotAuthorized>
+            </div>
+        </MudStack>
+        @*    <NotAuthorized>
             <MudStack>
                 <MudNavLink Href="/Login" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Login">Login</MudNavLink>
             </MudStack>
             </NotAuthorized> *@
-            </MudAppBar>
-   @*      </Authorized>
+    </MudAppBar>
+    @*      </Authorized>
     </AuthorizeView> *@
-@*     <AuthorizeView>
+    @*     <AuthorizeView>
         <Authorized> *@
-            <MudDrawer @bind-Open="@_drawerOpen" Elevation="20" Anchor="Anchor.Left">
-                <MudDrawerHeader>
-                    <MudText Typo="Typo.h4">Base App</MudText>
-                </MudDrawerHeader>
-                <MudDrawerContainer>
-                    <NavMenu />
-                </MudDrawerContainer>
-            </MudDrawer>
-            <MudMainContent>
-                <div class="container" style="margin-left:10px">
-                    @Body
-                </div>
-            </MudMainContent>
-  @*       </Authorized>
+    <MudDrawer @bind-Open="@_drawerOpen" Width="60px" Elevation="20" Anchor="Anchor.Left">
+      @*   <MudDrawerHeader>
+            <MudText Typo="Typo.h4"></MudText>
+        </MudDrawerHeader> *@
+        <MudDrawerContainer>
+            <NavMenu />
+        </MudDrawerContainer>
+    </MudDrawer>
+    <MudMainContent>
+        <div class="container" style="margin-left:10px">
+            @Body
+        </div>
+    </MudMainContent>
+    @*       </Authorized>
     </AuthorizeView> *@
 </MudLayout>
 
 @code{
-    private bool _drawerOpen = false;
+    private bool _drawerOpen = true;
     private bool _isDarkMode;
 
     private UserViewModel _user;
-    protected override async Task OnInitializedAsync()
+    protected override Task OnInitializedAsync()
     {
-
+        // httpClient.Res.Response.Headers.Append("blazor-enhanced-nav-redirect-location", redirectionUrl);
+        // httpContext.Response.StatusCode = 200;
         // await sessionStorage.SetItemAsync("name", "John Smith");
         // var name = await sessionStorage.GetItemAsync<string>("name");
-        _user = new UserViewModel();
-        // if (_authentication.IsAuthentication()) _navigate.NavigateTo("/Login", true);
-        await base.OnInitializedAsync();
+        // _user = new UserViewModel();
+        // await base.OnInitializedAsync();
+
+        // if (!_authentication.IsAuthentication())
+        // {
+        //     _navigate.NavigateTo("/login");
+        // }
+        return Task.CompletedTask;
     }
     private void DrawerToggle()
     {
         _drawerOpen = !_drawerOpen;
     }
+
+    private DrawerVariant _variant = DrawerVariant.Mini;
+
+    private void ScreenResized(bool hidden)
+    {
+        if (hidden)
+            _variant = DrawerVariant.Temporary;
+        else
+            _variant = DrawerVariant.Mini;
+    }
+
 
     MudTheme _customTheme = new MudTheme()
     {
@@ -106,7 +124,7 @@
     public void Logout()
     {
         // ((CustomAuthenticationStateProvider)_authenticationStateProvider).Logout();
-        // _navigate.NavigateTo("/Login", true);
+        _navigate.NavigateTo("/login");
     }
 }
 
