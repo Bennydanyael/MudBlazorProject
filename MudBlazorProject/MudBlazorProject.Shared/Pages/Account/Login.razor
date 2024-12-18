@@ -25,7 +25,7 @@
                  <MudStack Class="justify-space-between mud-width-full">
             <MudCard Style="width:500px;glyph-orientation-horizontal:revert-layer">
                         <MudCardContent>
-                             <MudForm Model="@_user" OnValidSubmit="@ValidateUser()">
+                             <MudForm Model="@_user">
                                 <MudTextField @bind-value="@_user.UserName" Label="Username" Variant="Variant.Text"></MudTextField>
                                 <MudTextField @bind-value="@_user.Password" Label="Password" Variant="Variant.Text" InputType="@InputType.Password"></MudTextField>
                             </MudForm>
@@ -103,7 +103,12 @@
     async Task LoginProcess()
     {
         _processing = true;
-        await Task.Delay(2000);
-        _processing = false;
+        await Task.Delay(10000);
+        if (!string.IsNullOrEmpty(_user.UserName) && !string.IsNullOrEmpty(_user.Password))
+        {
+            _processing = false;
+            // var _result = _httpClient.GetAsync("api/Account/Login");
+            _navigate.NavigateTo("/");
+        }
     }
 }
