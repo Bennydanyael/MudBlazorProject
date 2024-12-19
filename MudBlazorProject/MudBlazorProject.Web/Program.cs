@@ -5,7 +5,8 @@ using MudBlazorProject.Shared.Services;
 using MudBlazorProject.Shared.Services.Account;
 using MudBlazorProject.Web.Components;
 using MudBlazorProject.Web.Services;
-using System.Text.Json;
+using Service.Abstraction.Organization;
+using Service.Service.Organization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,8 +15,11 @@ builder.Services.AddRazorComponents().AddInteractiveServerComponents();
 builder.Services.AddMudServices();
 //builder.Services.AddAuthentication();
 //builder.Services.AddAuthorization();
+
 builder.Services.AddSingleton<HttpClient>();
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
+builder.Services.AddScoped<IOrgStructureService, OrgStructureService>();
+
 //builder.Services.AddAuthorizationCore();
 //builder.Services.AddCascadingAuthenticationState();
 //builder.Services.AddBlazoredSessionStorage(config => {

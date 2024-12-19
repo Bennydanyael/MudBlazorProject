@@ -1,5 +1,8 @@
 ﻿@page "/organization/structure"
 
+@using Service.ViewModels.Organization
+@using Service.Service.Organization
+
 @* 
 <MudStack Class="container">
 <MudButton Style="text-align:center" FullWidth="true" Variant="Variant.Filled">Primata</MudButton>
@@ -57,7 +60,7 @@
     private TimelineAlign _timelineAlign { get; set; } = TimelineAlign.Default;
 }
  *@
- 
+
 <div class="container">
     <h1 class="level-1 rectangle">CEO</h1>
     <ol class="level-2-wrapper">
@@ -141,3 +144,10 @@
         </li>
     </ol>
 </div>
+
+@code{
+    private readonly OrgStructureService _service;
+    private OrgStructureViewModel _vm;
+
+
+}
