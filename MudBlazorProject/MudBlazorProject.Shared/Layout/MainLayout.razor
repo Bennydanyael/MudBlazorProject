@@ -21,7 +21,7 @@
         Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())"></MudIconButton>
         <MudSpacer />
         <MudStack>
-            <div Class="d-flex justify-space-around flex-wrap mt-2">
+            <div Class="d-flex justify-space-around flex-wrap mt-1">
                 <MudThemeProvider @bind-IsDarkMode="@_isDarkMode" Theme="_customTheme" />
                 <MudToggleIconButton @bind-Toggled="@_isDarkMode"
                 Icon="@Icons.Material.Filled.DarkMode"
@@ -31,9 +31,9 @@
             </div>
         </MudStack>
         <MudStack Class="col-md-4">
-            <div Class="d-flex justify-space-around flex-wrap mt-4">
+            <div Class="d-flex justify-space-around flex-wrap mt-2">
                 <MudStack Class="col-md-1">
-                    <MudBadge Content="100" Color="Color.Primary" Overlap="true" Class="mx-6 my-4">
+                    <MudBadge Content="100" Color="Color.Primary" Overlap="true" Class="mx-4 my-2">
                         <MudIcon Icon="@Icons.Material.Filled.Email" Color="Color.Default" />
                     </MudBadge>
                 </MudStack>

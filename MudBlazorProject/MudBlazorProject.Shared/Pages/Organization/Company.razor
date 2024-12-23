@@ -1,6 +1,104 @@
 ﻿@page "/organization/company"
 
 <h3>Company</h3>
+<!-- Start DEMO HTML (Use the following code into your project)-->
+<h1>Hierarchical Tree Structure</h1>
+<MudNavMenu class="nav">
+	<ul>
+		<li>
+			<MudCard Style="padding-top:-80">
+				<MudCardHeader Style="align-content:center">
+					<MudText Align="Align.Center">President Director</MudText>
+				</MudCardHeader>
+				<MudCardContent Style="padding-top:-50px">
+					<MudAvatar Style="width:150px;height:200px;">
+						<MudImage Src="_content/MudBlazorProject.Shared/image/Solid.png"></MudImage>
+					</MudAvatar>
+					<MudText>Description</MudText>
+				</MudCardContent>
+			</MudCard>
+			<ul>
+				<li>
+					<a href="#">Lab</a>
+					<MudCard Class="level-1 rectangle">
+						<MudCardHeader Style="background-color:dodgerblue;height:auto;">
+							<MudText Align="Align.Center">Name</MudText>
+						</MudCardHeader>
+						<MudCardContent>
+							<MudAvatar>
+								<MudImage Src="_content/MudBlazorProject.Shared/image/OIP.jpg"></MudImage>
+							</MudAvatar>
+							<MudText>Description</MudText>
+						</MudCardContent>
+					</MudCard>
+					<ul>
+						<li>
+							<a href="#">Code</a>
+							<ul>
+								<li>
+									<a href="#">Html</a>
+									<ul>
+										<li>
+											<a href="#">Css</a>
+											<ul>
+												<li>
+													<a href="#">Jquery</a>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">Graph</a>
+							<ul>
+								<li>
+									<a href="#">Image</a>
+									<ul>
+										<li>
+											<a href="#">Design</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">Blog</a>
+					<ul>
+						<li>
+							<a href="#">Category</a>
+							<ul>
+								<li>
+									<a href="#">Code</a>
+								</li>
+								<li>
+									<a href="#">Graph</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">About</a>
+					<ul>
+						<li>
+							<a href="#">Vcard</a>
+
+						</li>
+						<li>
+							<a href="#">Map</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</MudNavMenu>
+<!-- END EDMO HTML (Happy Coding!)-->
+
 
 @code {
 

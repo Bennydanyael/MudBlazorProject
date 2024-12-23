@@ -16,13 +16,13 @@ namespace Service.Service.Organization
         {
             _vm._reportListData = new List<OrgStructureViewModel>();
             _vm._reportListData.AddRange(
-                new OrgStructureViewModel { Id = Guid.NewGuid(), LevelId = 0, Code = "1", Name = "CompanyName" },
+                new OrgStructureViewModel { Id = Guid.NewGuid(), LevelId = 0, Code = "1", Name = "CompanyName", Description="PT. Company Name" },
 
-                new OrgStructureViewModel { Id = Guid.NewGuid(), LevelId = 1, Code = "Director", Name = "CEO" },
-                new OrgStructureViewModel { Id = Guid.NewGuid(), LevelId = 1, Code = "Director", Name = "C0O" },
-                new OrgStructureViewModel { Id = Guid.NewGuid(), LevelId = 1, Code = "Director", Name = "CFO" },
-                new OrgStructureViewModel { Id = Guid.NewGuid(), LevelId = 1, Code = "Director", Name = "CTO" },
-                new OrgStructureViewModel { Id = Guid.NewGuid(), LevelId = 1, Code = "Director", Name = "CMO" },
+                new OrgStructureViewModel { Id = Guid.NewGuid(), LevelId = 1, Code = "Director", Name = "CEO", Description= "Chief Executive Officer" },
+                new OrgStructureViewModel { Id = Guid.NewGuid(), LevelId = 1, Code = "Director", Name = "C0O", Description= "Chief Operating Officer" },
+                new OrgStructureViewModel { Id = Guid.NewGuid(), LevelId = 1, Code = "Director", Name = "CFO", Description= "Chief Financial Officer" },
+                new OrgStructureViewModel { Id = Guid.NewGuid(), LevelId = 1, Code = "Director", Name = "CTO", Description= "Chief Technology Officer" },
+                new OrgStructureViewModel { Id = Guid.NewGuid(), LevelId = 1, Code = "Director", Name = "CMO", Description= "Chief Marketing Officer" },
 
                 new OrgStructureViewModel { Id = Guid.NewGuid(), LevelId = 2, Code = "Manager", Name = "Manager A" },
                 new OrgStructureViewModel { Id = Guid.NewGuid(), LevelId = 2, Code = "Manager", Name = "Manager B" },

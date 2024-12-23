@@ -2,6 +2,124 @@
 
 <h3>Announcement</h3>
 
+
+@using System.Collections.ObjectModel
+
+<MudPaper draggable="true" Width="100%" Elevation="0">
+    <MudTreeView dir="ltr" ServerData="@LoadServerData" Items="@InitialTreeItems" Style="flex-direction:row;display: flex;width:100%">
+        <ItemTemplate>
+            <MudTreeViewItem dir="rtl" Style="flex-direction:column;flex-wrap: wrap;justify-content: center;display: flex;width:100%;line-height: 1.5;" Value="@context.Value" Icon="@context.Icon" Class="level-1 rectangle" LoadingIconColor="Color.Info" CanExpand="@context.Expandable" />
+        </ItemTemplate>
+    </MudTreeView>
+</MudPaper>
+
+@* <MudPaper Width="600px" Elevation="0">
+    <MudTreeView @ref="TreeView" Hover AutoExpand="@AutoExpand" @bind-SelectedValue="SelectedValue" SelectionMode="@SelectionMode.ToggleSelection">
+        <MudTreeViewItem Class="level-1 rectangle" Value="@("C:")" Icon="@Icons.Custom.Uncategorized.Folder" IconExpanded="@Icons.Custom.Uncategorized.FolderOpen">
+            <MudTreeViewItem Class="level-2 rectangle" Value="@("config")" Icon="@Icons.Custom.Uncategorized.Folder" IconExpanded="@Icons.Custom.Uncategorized.FolderOpen">
+                <MudTreeViewItem Class="level-3 rectangle" Value='"launch.json"' Icon="@Icons.Custom.FileFormats.FileCode" />
+                <MudTreeViewItem Class="level-3 rectangle" Value='"tasks.json"' Icon="@Icons.Custom.FileFormats.FileCode" />
+            </MudTreeViewItem>
+            <MudTreeViewItem Value="@("images")" Icon="@Icons.Custom.Uncategorized.Folder" IconExpanded="@Icons.Custom.Uncategorized.FolderOpen">
+                <MudTreeViewItem Value="@("logo.png")" Icon="@Icons.Custom.FileFormats.FileImage" />
+            </MudTreeViewItem>
+        </MudTreeViewItem>
+    </MudTreeView>
+</MudPaper> *@
+
+@* <MudStack Row Justify="Justify.Center" Style="width: 100%" Wrap="Wrap.Wrap">
+    <MudButton Color="Color.Primary" OnClick="@(()=>TreeView.ExpandAllAsync())" Variant="Variant.Filled">Expand All</MudButton>
+    <MudButton Color="Color.Dark" OnClick="@(()=>TreeView.CollapseAllAsync())" Variant="Variant.Filled">Collapse All</MudButton>
+    <MudChipSet T="string" @bind-SelectedValue="SelectedValue" Color="Color.Primary" Variant="Variant.Text" SelectionMode="@SelectionMode.ToggleSelection">
+        <MudChip Text="config" />
+        <MudChip Text="launch.json" />
+        <MudChip Text="tasks.json" />
+        <MudChip Text="images" />
+        <MudChip Text="logo.png" />
+    </MudChipSet>
+    <MudSwitch @bind-Value="AutoExpand" Color="Color.Primary">AutoExpand</MudSwitch>
+</MudStack> *@
 @code {
+    public MudTreeView<string> TreeView;
+    public string SelectedValue = null;
+    public bool AutoExpand = true;
+
+    private List<TreeItemData<string>> InitialTreeItems { get; set; } = new();
+    private List<TreeItemData<string>> ServerTreeItems { get; set; } = new();
+
+    protected override void OnInitialized()
+    {
+        // MudTreeView initially only gets these top-level items
+        InitialTreeItems.Add(new TreeItemData<string> { Value = "All Mail", Icon = Icons.Material.Filled.Label, });
+        InitialTreeItems.Add(new TreeItemData<string> { Value = "Trash", Icon = Icons.Material.Filled.Delete });
+
+        // LoadServerData will load from this hierarchy
+        ServerTreeItems.Add(new TreeItemData<string>
+            {
+                Value = "All Mail",
+                Icon = Icons.Material.Filled.Label,
+                Children = [
+                                new TreeItemData<string> { Value = "Promotions", Icon = Icons.Material.Filled.Group,
+                            Children = [
+                                    new TreeItemData<string> { Value = "L.E.D Door Mats", Icon = Icons.Material.Outlined.Lightbulb, Expandable = false },
+                                    new TreeItemData<string> { Value = "Car Beauty Salon", Icon = Icons.Material.Filled.CarRepair, Expandable = false },
+                                    new TreeItemData<string> { Value = "Fakedoors.com", Icon = Icons.Material.Outlined.DoorFront, Expandable = false },
+                                    new TreeItemData<string> { Value = "Bluetooth Toilet", Icon = Icons.Material.Filled.Wc, Expandable = false }
+                                ]},
+                    new TreeItemData<string> { Value = "Updates", Icon = Icons.Material.Filled.Info, Expandable = false },
+                    new TreeItemData<string> { Value = "Forums", Icon = Icons.Material.Filled.QuestionAnswer, Expandable = false },
+                    new TreeItemData<string> { Value = "Social", Icon = Icons.Material.Filled.LocalOffer, Expandable = false }
+                        ]
+            });
+        ServerTreeItems.Add(new TreeItemData<string>
+                {
+                    Value = "Trash",
+                    Icon = Icons.Material.Filled.Label,
+                    Children = [
+                                    new TreeItemData<string> { Value = "Trash 1", Icon = Icons.Material.Filled.Group,
+                            Children = [
+                                    new TreeItemData<string> { Value = "Trash 1.1", Icon = Icons.Material.Outlined.Lightbulb, Expandable = false },
+                                    new TreeItemData<string> { Value = "Trash 1.2", Icon = Icons.Material.Filled.CarRepair, Expandable = false },
+                                    new TreeItemData<string> { Value = "Trash 1.3", Icon = Icons.Material.Outlined.DoorFront, Expandable = false },
+                                    new TreeItemData<string> { Value = "Trash 1.4", Icon = Icons.Material.Filled.Wc, Expandable = false }
+                                ]},
+                    new TreeItemData<string> { Value = "Trash 2.1", Icon = Icons.Material.Filled.Info, Expandable = false },
+                    new TreeItemData<string> { Value = "Trash 2.2", Icon = Icons.Material.Filled.QuestionAnswer, Expandable = false },
+                    new TreeItemData<string> { Value = "Trash 2.3", Icon = Icons.Material.Filled.LocalOffer, Expandable = false }
+                        ]
+                });
+    }
+
+    public async Task<IReadOnlyCollection<TreeItemData<string>>> LoadServerData(string parentValue)
+    {
+        // wait 500ms to simulate a server load, then recursively search through our tree to find the child items for the given value
+        await Task.Delay(500);
+        foreach (var item in ServerTreeItems)
+        {
+            if (item.Value == parentValue)
+                return item.Children;
+            if (!item.HasChildren)
+                continue;
+            var descendentItem = FindTreeItemData(parentValue, item);
+            if (descendentItem != null)
+                return descendentItem.Children;
+        }
+        return null;
+    }
+
+    private TreeItemData<string> FindTreeItemData(string value, TreeItemData<string> parent)
+    {
+        foreach (var child in parent.Children)
+        {
+            if (child.Value == value)
+                return child;
+            if (!child.HasChildren)
+                continue;
+            var descendentItem = FindTreeItemData(value, child);
+            if (descendentItem != null)
+                return descendentItem;
+        }
+        return null;
+    }
 
 }
