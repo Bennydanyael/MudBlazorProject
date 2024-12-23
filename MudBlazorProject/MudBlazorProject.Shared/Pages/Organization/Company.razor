@@ -2,20 +2,32 @@
 
 <h3>Company</h3>
 <!-- Start DEMO HTML (Use the following code into your project)-->
+<MudStack AlignItems="AlignItems.Center">
 <h1>Hierarchical Tree Structure</h1>
 <MudNavMenu class="nav">
 	<ul>
 		<li>
-			<MudCard Style="padding-top:-80">
-				<MudCardHeader Style="align-content:center">
-					<MudText Align="Align.Center">President Director</MudText>
+			<MudCard Style="align-items:center">
+					<MudText Style="background-color:blue;color:white;padding-top:-250px">President Director</MudText>
+				<MudCardHeader Style="height:180px;">
+						<MudAvatar Style="width:150px;height:180px;">
+							<MudImage Src="_content/MudBlazorProject.Shared/image/Solid.png"></MudImage>
+						</MudAvatar>
 				</MudCardHeader>
-				<MudCardContent Style="padding-top:-50px">
-					<MudAvatar Style="width:150px;height:200px;">
-						<MudImage Src="_content/MudBlazorProject.Shared/image/Solid.png"></MudImage>
-					</MudAvatar>
-					<MudText>Description</MudText>
+				<MudCardContent Style="background-color:transparent;padding-top:-150px;height:150px;">
+					<MudStack style="width:20px; height:10px">
+							<MudBadge Content="0" Overlap="false" Class="mx-3 my-2">
+								<MudIcon Icon="@Icons.Material.Filled.People" Color="Color.Primary" />
+							</MudBadge>
+							<MudBadge Content="3" Overlap="true" Class="mx-3 my-2">
+								<MudIcon Icon="@Icons.Material.Filled.PeopleOutline" Color="Color.Default" />
+							</MudBadge>
+					</MudStack>
 				</MudCardContent>
+				<MudCardActions>
+						<MudText>Jhon Elly</MudText>
+						<MudText Color="Color.Dark">Inventory Manager</MudText>
+				</MudCardActions>
 			</MudCard>
 			<ul>
 				<li>
@@ -98,7 +110,7 @@
 	</ul>
 </MudNavMenu>
 <!-- END EDMO HTML (Happy Coding!)-->
-
+</MudStack>
 
 @code {
 
