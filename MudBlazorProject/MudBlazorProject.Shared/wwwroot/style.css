@@ -126,3 +126,7 @@ h1 {
   content: '';
   border-color: #94a0b4;
 }
+
+li.dropdown ul {
+    display: none;
+}

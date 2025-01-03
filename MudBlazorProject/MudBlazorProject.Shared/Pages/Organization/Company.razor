@@ -1,117 +1,117 @@
 ﻿@page "/organization/company"
 
 <h3>Company</h3>
-<!-- Start DEMO HTML (Use the following code into your project)-->
 <MudStack AlignItems="AlignItems.Center">
-<h1>Hierarchical Tree Structure</h1>
-<MudNavMenu class="nav">
-	<ul>
-		<li>
-			<MudCard Style="align-items:center">
-					<MudText Style="background-color:blue;color:white;padding-top:-250px">President Director</MudText>
-				<MudCardHeader Style="height:180px;">
+	<h1>Hierarchical Tree Structure</h1>
+	<MudNavMenu class="nav">
+		<ul>
+			<li>
+				<MudNavGroup Title="President Director" Style="background-color:blue;" @bind-Expanded=_expanded>
+				<MudCard Style="align-items:center;">
+					<MudCardHeader Style="height:150px;">
 						<MudAvatar Style="width:150px;height:180px;">
 							<MudImage Src="_content/MudBlazorProject.Shared/image/Solid.png"></MudImage>
 						</MudAvatar>
-				</MudCardHeader>
-				<MudCardContent Style="background-color:transparent;padding-top:-150px;height:150px;">
-					<MudStack style="width:20px; height:10px">
-							<MudBadge Content="0" Overlap="false" Class="mx-3 my-2">
+					</MudCardHeader>
+						<MudCardContent Style="background-color:transparent;padding-top:-150px;height:150px;width:100px;">
+							<MudBadge Class="border-1" Content="0" Overlap="false">
 								<MudIcon Icon="@Icons.Material.Filled.People" Color="Color.Primary" />
 							</MudBadge>
-							<MudBadge Content="3" Overlap="true" Class="mx-3 my-2">
+							<MudBadge Class="border-1" Content="3" Overlap="false">
 								<MudIcon Icon="@Icons.Material.Filled.PeopleOutline" Color="Color.Default" />
 							</MudBadge>
-					</MudStack>
-				</MudCardContent>
-				<MudCardActions>
-						<MudText>Jhon Elly</MudText>
-						<MudText Color="Color.Dark">Inventory Manager</MudText>
-				</MudCardActions>
-			</MudCard>
-			<ul>
-				<li>
-					<a href="#">Lab</a>
-					<MudCard Class="level-1 rectangle">
-						<MudCardHeader Style="background-color:dodgerblue;height:auto;">
-							<MudText Align="Align.Center">Name</MudText>
-						</MudCardHeader>
-						<MudCardContent>
-							<MudAvatar>
-								<MudImage Src="_content/MudBlazorProject.Shared/image/OIP.jpg"></MudImage>
-							</MudAvatar>
-							<MudText>Description</MudText>
 						</MudCardContent>
-					</MudCard>
-					<ul>
-						<li>
-							<a href="#">Code</a>
-							<ul>
-								<li>
-									<a href="#">Html</a>
-									<ul>
-										<li>
-											<a href="#">Css</a>
-											<ul>
-												<li>
-													<a href="#">Jquery</a>
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a href="#">Graph</a>
-							<ul>
-								<li>
-									<a href="#">Image</a>
-									<ul>
-										<li>
-											<a href="#">Design</a>
-										</li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="#">Blog</a>
-					<ul>
-						<li>
-							<a href="#">Category</a>
-							<ul>
-								<li>
-									<a href="#">Code</a>
-								</li>
-								<li>
-									<a href="#">Graph</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="#">About</a>
-					<ul>
-						<li>
-							<a href="#">Vcard</a>
+					<MudCardActions>
+						<MudText>Jhon Elly</MudText>
+						<MudSpacer/>
+						<MudText Color="Color.Dark">Inventory Manager</MudText>
+					</MudCardActions>
+				</MudCard>
+				</MudNavGroup>
+				<ul>
+					<li>
+						<MudNavGroup Title="Lab" Style="background-color:blue;text-align:center;" @bind-Expanded=_expanded>
+						<MudCard Style="align-items:center;">
+							<MudCardHeader Style="background-color:dodgerblue;height:auto;">
+								<MudText Align="Align.Center">Name</MudText>
+							</MudCardHeader>
+							<MudCardContent>
+								<MudAvatar>
+									<MudImage Src="_content/MudBlazorProject.Shared/image/OIP.jpg"></MudImage>
+								</MudAvatar>
+								<MudText>Description</MudText>
+							</MudCardContent>
+						</MudCard>
+						</MudNavGroup>
+						<ul>
+							<li>
+								<a href="#">Code</a>
+								<ul>
+									<li>
+										<a href="#">Html</a>
+										<ul>
+											<li>
+												<a href="#">Css</a>
+												<ul>
+													<li>
+														<a href="#">Jquery</a>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">Graph</a>
+								<ul>
+									<li>
+										<a href="#">Image</a>
+										<ul>
+											<li>
+												<a href="#">Design</a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">Blog</a>
+						<ul>
+							<li>
+								<a href="#">Category</a>
+								<ul>
+									<li>
+										<a href="#">Code</a>
+									</li>
+									<li>
+										<a href="#">Graph</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">About</a>
+						<ul>
+							<li>
+								<a href="#">Vcard</a>
 
-						</li>
-						<li>
-							<a href="#">Map</a>
-						</li>
-					</ul>
-				</li>
-			</ul>
-		</li>
-	</ul>
-</MudNavMenu>
-<!-- END EDMO HTML (Happy Coding!)-->
+							</li>
+							<li>
+								<a href="#">Map</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</MudNavMenu>
 </MudStack>
 
 @code {
+	private bool _expanded = false;
 
 }
