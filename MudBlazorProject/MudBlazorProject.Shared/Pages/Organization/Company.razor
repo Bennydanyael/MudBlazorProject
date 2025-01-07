@@ -6,31 +6,30 @@
 	<MudNavMenu class="nav">
 		<ul>
 			<li>
-				<MudNavGroup Title="President Director" Style="background-color:blue;" @bind-Expanded=_expanded>
-				<MudCard Style="align-items:center;">
+				<MudNavGroup Title="President Director" Style="background-color:dodgerblue;text-align:center" @bind-Expanded=_expanded>
+				<MudCard Style="align-items:center;border-radius:revert-layer">
 					<MudCardHeader Style="height:150px;">
 						<MudAvatar Style="width:150px;height:180px;">
 							<MudImage Src="_content/MudBlazorProject.Shared/image/Solid.png"></MudImage>
 						</MudAvatar>
 					</MudCardHeader>
-						<MudCardContent Style="background-color:transparent;padding-top:-150px;height:150px;width:100px;">
+						<MudCardContent Style="background-color:transparent;padding-top:-150px;width:auto;border:solid;border-radius:2em / 5em;">
 							<MudBadge Class="border-1" Content="0" Overlap="false">
-								<MudIcon Icon="@Icons.Material.Filled.People" Color="Color.Primary" />
+								<MudIcon Icon="@Icons.Material.Filled.Person" Color="Color.Primary" />
 							</MudBadge>
 							<MudBadge Class="border-1" Content="3" Overlap="false">
-								<MudIcon Icon="@Icons.Material.Filled.PeopleOutline" Color="Color.Default" />
+								<MudIcon Icon="fas fa-users" Color="Color.Default" />
 							</MudBadge>
 						</MudCardContent>
-					<MudCardActions>
-						<MudText>Jhon Elly</MudText>
-						<MudSpacer/>
-						<MudText Color="Color.Dark">Inventory Manager</MudText>
-					</MudCardActions>
+						<div class="col-md-2">
+							<MudText Class="pa-2" Align="Align.Center">Jhon Elly</MudText>
+							<MudText Align="Align.Center" Color="Color.Dark">Inventory Manager</MudText>
+						</div>
 				</MudCard>
 				</MudNavGroup>
 				<ul>
 					<li>
-						<MudNavGroup Title="Lab" Style="background-color:blue;text-align:center;" @bind-Expanded=_expanded>
+						<MudNavGroup Title="Lab" Style="background-color:dodgerblue;text-align:center;" @bind-Expanded=_expanded>
 						<MudCard Style="align-items:center;">
 							<MudCardHeader Style="background-color:dodgerblue;height:auto;">
 								<MudText Align="Align.Center">Name</MudText>
