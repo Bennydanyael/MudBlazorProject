@@ -12,6 +12,7 @@ namespace Service.ViewModels.Organization
         public int LevelId { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
+        public string Position { get; set; }
         public string Description { get; set; }
         public string Responsibilities { get; set; }
 

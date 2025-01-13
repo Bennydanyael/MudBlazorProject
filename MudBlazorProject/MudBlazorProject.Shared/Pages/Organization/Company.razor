@@ -3,21 +3,44 @@
 <h3>Company</h3>
 <MudStack AlignItems="AlignItems.Center">
 	<h1>Hierarchical Tree Structure</h1>
-	<MudNavMenu class="nav">
+	<MudNavMenu class="nav" Style="align-content:center;text-align:center">
 		<ul>
 			<li>
-				<MudNavGroup Title="President Director" Style="background-color:dodgerblue;text-align:center" @bind-Expanded=_expanded>
-				<MudCard Style="align-items:center;border-radius:revert-layer">
-					<MudCardHeader Style="height:150px;">
+				<nav class="nav-group" style="background-color:dodgerblue;text-align:center;">
+					<label class="control-label">President Directore</label>
+					<div class="card" style="background-color:transparent;text-align:center;">
+						<div class="card-header">
+							<div class="avatar">
+								<img src="~/_content/MudBlazorProject.Shared/image/Solid.png" />
+							</div>
+						</div>
+						<MudCardContent Style="background-color:transparent;padding-top:-150px;width:auto;border:solid;border-radius:2em / 5em;">
+							<MudBadge Style="background-color:transparent;" Class="border-1" Content="0" Overlap="false">
+								<MudIcon Icon="@Icons.Material.Filled.Person" Color="Color.Primary" />
+							</MudBadge>
+							<MudBadge Style="background-color:transparent;" Class="border-1" Content="3" Overlap="false">
+								<MudIcon Icon="fas fa-users" Color="Color.Default" />
+							</MudBadge>
+						</MudCardContent>
+						<div class="card-footer">
+							<MudText Class="pa-2" Align="Align.Center">Jhon Elly</MudText>
+							<MudText Align="Align.Center" Color="Color.Dark">Inventory Manager</MudText>
+						</div>
+					</div>
+				</nav>
+
+		@* 		<MudNavGroup Title="President Director" Style="background-color:dodgerblue;text-align:center;" @bind-Expanded=_expanded>
+				<MudCard Style="align-items:center;border-radius:revert-layer;width:250px">
+						<MudCardHeader Style="background-color:transparent;height:150px;">
 						<MudAvatar Style="width:150px;height:180px;">
 							<MudImage Src="_content/MudBlazorProject.Shared/image/Solid.png"></MudImage>
 						</MudAvatar>
 					</MudCardHeader>
 						<MudCardContent Style="background-color:transparent;padding-top:-150px;width:auto;border:solid;border-radius:2em / 5em;">
-							<MudBadge Class="border-1" Content="0" Overlap="false">
+							<MudBadge Style="background-color:transparent;" Class="border-1" Content="0" Overlap="false">
 								<MudIcon Icon="@Icons.Material.Filled.Person" Color="Color.Primary" />
 							</MudBadge>
-							<MudBadge Class="border-1" Content="3" Overlap="false">
+							<MudBadge Style="background-color:transparent;" Class="border-1" Content="3" Overlap="false">
 								<MudIcon Icon="fas fa-users" Color="Color.Default" />
 							</MudBadge>
 						</MudCardContent>
@@ -26,7 +49,7 @@
 							<MudText Align="Align.Center" Color="Color.Dark">Inventory Manager</MudText>
 						</div>
 				</MudCard>
-				</MudNavGroup>
+				</MudNavGroup> *@
 				<ul>
 					<li>
 						<MudNavGroup Title="Lab" Style="background-color:dodgerblue;text-align:center;" @bind-Expanded=_expanded>
