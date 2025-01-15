@@ -62,139 +62,91 @@
 }
  *@
 
-<div class="container">
-    @foreach (var _data in _vm._reportListData)
-    {
-        @* <h1 class="level-1 rectangle">@_isMain ? @_data.Name : "CompanyName")</h1> *@
-        @if (_data.LevelId == 0)
-        {
-        <MudCard Class="level-1 rectangle">
-            <MudCardHeader Style="background-color:dodgerblue;height:auto;">
-                <MudText Align="Align.Center">@_data.Name</MudText>
-            </MudCardHeader>
-            <MudCardContent>
-                <MudText>@_data.Description</MudText>
-            </MudCardContent>
-        </MudCard>
-        }
-        <ol class="level-2-wrapper">
-            <li>
-                @* <h2 class="level-2 rectangle">Director A</h2> *@
-                @if (_data.LevelId == 1)
-                {
-                    <MudCard Class="level-2 rectangle">
-                        <MudCardHeader Style="background-color:dodgerblue;height:auto;">
-                            <MudText Align="Align.Center">@_data.Name</MudText>
-                    </MudCardHeader>
-                    <MudCardContent>
-                        <MudText>@_data.Description</MudText>
-                    </MudCardContent>
-                </MudCard>
-                }
-                <ol class="level-3-wrapper">
-                    <li>
-                        @* <h3 class="level-3 rectangle">Manager A</h3> *@
-                        @if (_data.LevelId == 2)
-                        {
-                            @* <h4 class="level-4 rectangle">Person A</h4> *@
-                            <MudCard Class="level-2 rectangle">
-                                <MudCardHeader Style="background-color:dodgerblue;height:auto;width:auto">
-                                    <MudText Align="Align.Center">@_data.Name</MudText>
+<MudStack AlignItems="AlignItems.Center" style="width:1200px">
+    <MudNavMenu class="nav" Style="align-content:center;text-align:center;width:100%">
+        <MudNavGroup title="@(!_expanded ? _vm._reportListData.FirstOrDefault().Position : string.Empty)" Style="background-color:transparent;text-align:center;" @bind-Expanded=_expanded>
+            @* <h1 class="level-1 rectangle">@_isMain ? @_data.Name : "CompanyName")</h1> *@
+            <MudCard Class="level-1 rectangle" Style="width:300px;align-items:center;">
+                <MudText Align="Align.Center">@_vm._reportListData.FirstOrDefault().Name</MudText>
+                <MudCardHeader Style="height:auto;align-items:center">
+                    <MudAvatar Style="width:150px;height:180px;">
+                        <MudImage Src="_content/MudBlazorProject.Shared/image/face3.jpg"></MudImage>
+                    </MudAvatar>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudText>@_vm._reportListData.FirstOrDefault().Position</MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudNavGroup>
+        <ul>
+            @foreach (var _data in _vm._reportListData)
+            {
+                _inc++;
+                <li>
+                    @if(_data.LevelId != 0 && _data.LevelId == 1)
+                    {
+                        <MudNavGroup title="@(!_expanded ? _data.Position : string.Empty)" Style="background-color:transparent;text-align:center;" @bind-Expanded=_expanded>
+                            <MudText Align="Align.Center" Style="background-color:dodgerblue;width:200px">@_data.Code</MudText>
+                            <MudCard Style="align-items:center;width:200px;border:groove;border-radius: 15px 15px 30px 30px">
+                                <MudCardHeader Style="height:auto;align-items:center">
+                                    <MudAvatar Style="width:150px;height:180px;">
+                                        <MudImage Src="_content/MudBlazorProject.Shared/image/face2.jpg"></MudImage>
+                                    </MudAvatar>
                                 </MudCardHeader>
-                                <MudCardContent>
-                                    <MudText>@_data.Description</MudText>
+                                <MudCardContent Style="background-color:transparent;padding-top:-150px;width:auto;border:solid;border-radius:2em / 5em;">
+                                    <MudBadge Style="background-color:transparent;" Class="border-1" Content="0" Overlap="false">
+                                        <MudIcon Icon="@Icons.Material.Filled.Person" Color="Color.Primary" />
+                                    </MudBadge>
+                                    <MudBadge Style="background-color:transparent;" Class="border-1" Content="3" Overlap="false">
+                                        <MudIcon Icon="fas fa-users" Color="Color.Default" />
+                                    </MudBadge>
                                 </MudCardContent>
+                                <div class="card-footer">
+                                    <MudText Class="pa-2" Align="Align.Center">@_data.Name</MudText>
+                                    <MudText Align="Align.Center" Color="Color.Dark">@_data.Position</MudText>
+                                </div>
                             </MudCard>
-                        }
-                        <ol class="level-4-wrapper">
+                        </MudNavGroup>
+                    }
+
+                    @if(_data.LevelId > 1)
+                    {
+                        <ul>
                             <li>
-                                @if (_data.LevelId == 3)
-                                {
-                                @* <h4 class="level-4 rectangle">Person A</h4> *@
-                                    <MudCard Class="level-2 rectangle">
-                                        <MudCardHeader Style="background-color:dodgerblue;height:auto;width:auto">
-                                            <MudText Align="Align.Center">@_data.Name</MudText>
-                                        </MudCardHeader>
-                                        <MudCardContent>
-                                            <MudText>@_data.Description</MudText>
-                                        </MudCardContent>
+                                <MudNavGroup title="@(!_expanded ? _data.Position : string.Empty)" Style="background-color:transparent;text-align:center;" @bind-Expanded=_expanded>
+                                    <MudText Align="Align.Center" Style="background-color:dodgerblue;width:200px">@_data.Code</MudText>
+                                    <MudCard Style="align-items:center;width:200px;border:groove;border-radius: 15px 15px 30px 30px">
+                                                <MudCardHeader Style="height:auto;align-items:center">
+                                                    <MudAvatar Style="width:150px;height:180px;">
+                                                        <MudImage Src="_content/MudBlazorProject.Shared/image/face2.jpg"></MudImage>
+                                                    </MudAvatar>
+                                                </MudCardHeader>
+                                                <MudCardContent Style="background-color:transparent;padding-top:-150px;width:auto;border:solid;border-radius:2em / 5em;">
+                                            <MudBadge Style="background-color:transparent;" Class="border-1" Content="0" Overlap="false">
+                                                <MudIcon Icon="@Icons.Material.Filled.Person" Color="Color.Primary" />
+                                            </MudBadge>
+                                            <MudBadge Style="background-color:transparent;" Class="border-1" Content="3" Overlap="false">
+                                                <MudIcon Icon="fas fa-users" Color="Color.Default" />
+                                            </MudBadge>
+                                            </MudCardContent>
+                                        <div class="card-footer">
+                                            <MudText Class="pa-2" Align="Align.Center">@_data.Name</MudText>
+                                            <MudText Align="Align.Center" Color="Color.Dark">@_data.Position</MudText>
+                                        </div>
                                     </MudCard>
-                                }
+                                </MudNavGroup>
                             </li>
-                        @*     <li>
-                                <h4 class="level-4 rectangle">Person B</h4>
-                            </li>
-                            <li>
-                                <h4 class="level-4 rectangle">Person C</h4>
-                            </li>
-                            <li>
-                                <h4 class="level-4 rectangle">Person D</h4>
-                            </li> *@
-                        </ol>
-                    </li>
-                    <li>
-                        <h3 class="level-3 rectangle">Manager B</h3>
-                  @*       <ol class="level-4-wrapper">
-                            <li>
-                                <h4 class="level-4 rectangle">Person A</h4>
-                            </li>
-                            <li>
-                                <h4 class="level-4 rectangle">Person B</h4>
-                            </li>
-                            <li>
-                                <h4 class="level-4 rectangle">Person C</h4>
-                            </li>
-                            <li>
-                                <h4 class="level-4 rectangle">Person D</h4>
-                            </li>
-                        </ol> *@
-                    </li>
-                </ol>
-            </li>
-            <li>
-                <h2 class="level-2 rectangle">Director B</h2>
-                <ol class="level-3-wrapper">
-                    <li>
-                        <h3 class="level-3 rectangle">Manager C</h3>
-                        <ol class="level-4-wrapper">
-                            <li>
-                                <h4 class="level-4 rectangle">Person A</h4>
-                            </li>
-                            <li>
-                                <h4 class="level-4 rectangle">Person B</h4>
-                            </li>
-                            <li>
-                                <h4 class="level-4 rectangle">Person C</h4>
-                            </li>
-                            <li>
-                                <h4 class="level-4 rectangle">Person D</h4>
-                            </li>
-                        </ol>
-                    </li>
-                    <li>
-                        <h3 class="level-3 rectangle">Manager D</h3>
-                        <ol class="level-4-wrapper">
-                            <li>
-                                <h4 class="level-4 rectangle">Person A</h4>
-                            </li>
-                            <li>
-                                <h4 class="level-4 rectangle">Person B</h4>
-                            </li>
-                            <li>
-                                <h4 class="level-4 rectangle">Person C</h4>
-                            </li>
-                            <li>
-                                <h4 class="level-4 rectangle">Person D</h4>
-                            </li>
-                        </ol>
-                    </li>
-                </ol>
-            </li>
-        </ol>
-    }
-</div>
+                        </ul>
+                    }
+                </li>
+            }
+        </ul>
+    </MudNavMenu>
+</MudStack>
 
     @code{
+    private bool _expanded = true;
+    int _inc = 0;
     private OrgStructureViewModel _vm = new OrgStructureViewModel();
 
     protected override Task OnInitializedAsync()
