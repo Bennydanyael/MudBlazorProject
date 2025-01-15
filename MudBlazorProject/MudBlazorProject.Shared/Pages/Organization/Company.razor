@@ -1,244 +1,116 @@
 ﻿@page "/organization/company"
 
 <h3>Company</h3>
-<!-- Start DEMO HTML (Use the following code into your project)-->
 <MudStack AlignItems="AlignItems.Center">
-<h1>Hierarchical Tree Structure</h1>
-<MudNavMenu class="nav">
-	<ul>
+	<h1>Hierarchical Tree Structure</h1>
+	<MudNavMenu class="nav">
+		<ul>
 			<li>
-				<MudText Style="background-color:blue;color:white;padding-top:-250px">BOD</MudText>
-				<MudCard Style="align-items:center;box-shadow: 10px 10px 5px lightblue;border-radius: 5% 5% 5% 5%;width:revert-layer">
-				<MudCardHeader Style="height:180px;">
+				<MudNavGroup Title="President Director" Style="background-color:dodgerblue;text-align:center" @bind-Expanded=_expanded>
+				<MudCard Style="align-items:center;border-radius:revert-layer">
+					<MudCardHeader Style="height:150px;">
 						<MudAvatar Style="width:150px;height:180px;">
 							<MudImage Src="_content/MudBlazorProject.Shared/image/Solid.png"></MudImage>
 						</MudAvatar>
-				</MudCardHeader>
-				@* <MudCardContent Style="background-color:transparent;padding-top:-150px;"> *@
-					<div class="col-md-2" style="padding-top:-250px">
-						<table>
-							<th>
-								<td style="width:80px;border:solid;border-radius: 100% 5% 5% 100%;border-color:blue">
-									<MudBadge id="PeopleMost" Content="0" Overlap="false" Class="col-md-2">
-										<MudIcon Icon="@Icons.Material.Filled.People" Color="Color.Primary" />
-									</MudBadge>
-								</td>
-							<td style="width:80px;border:solid;border-radius: 5% 100% 100% 5%;border-color:blue">
-									<MudBadge id="PeopleDo" Content="3" Overlap="false" Class="col-md-2">
-										<MudIcon Icon="@Icons.Material.Filled.PeopleOutline" Color="Color.Default" />
-									</MudBadge>
-								</td>
-							</th>
-						</table>
-					</div>
-				@* </MudCardContent> *@
-					<MudCardActions Class="col-md-2">
+					</MudCardHeader>
+						<MudCardContent Style="background-color:transparent;padding-top:-150px;width:auto;border:solid;border-radius:2em / 5em;">
+							<MudBadge Class="border-1" Content="0" Overlap="false">
+								<MudIcon Icon="@Icons.Material.Filled.Person" Color="Color.Primary" />
+							</MudBadge>
+							<MudBadge Class="border-1" Content="3" Overlap="false">
+								<MudIcon Icon="fas fa-users" Color="Color.Default" />
+							</MudBadge>
+						</MudCardContent>
 						<div class="col-md-2">
-						<MudText>Jhon Elly</MudText>
-						<MudSpacer/>
-						<MudText Style="font-size:20px" Color="Color.Dark">President Director</MudText>
+							<MudText Class="pa-2" Align="Align.Center">Jhon Elly</MudText>
+							<MudText Align="Align.Center" Color="Color.Dark">Inventory Manager</MudText>
 						</div>
-				</MudCardActions>
-			</MudCard>
-			<ul>
-				<li>
-						<MudText Style="background-color:blue;color:white;padding-top:-250px">Inventory</MudText>
-						<MudCard Style="align-items:center;box-shadow: 10px 10px 5px lightblue;border-radius: 5% 5% 5% 5%;width:revert-layer">
-							<MudCardHeader Style="height:180px;">
-								<MudAvatar Style="width:150px;height:180px;">
-									<MudImage Src="_content/MudBlazorProject.Shared/image/Solid.png"></MudImage>
-								</MudAvatar>
+				</MudCard>
+				</MudNavGroup>
+				<ul>
+					<li>
+						<MudNavGroup Title="Lab" Style="background-color:dodgerblue;text-align:center;" @bind-Expanded=_expanded>
+						<MudCard Style="align-items:center;">
+							<MudCardHeader Style="background-color:dodgerblue;height:auto;">
+								<MudText Align="Align.Center">Name</MudText>
 							</MudCardHeader>
-							@* <MudCardContent Style="background-color:transparent;padding-top:-150px;"> *@
-							<div class="col-md-2" style="padding-top:-250px">
-								<table>
-									<th>
-									<td style="width:80px;border:solid;border-radius: 100% 5% 5% 100%;border-color:blue">
-										<MudBadge id="PeopleMost" Content="0" Overlap="false" Class="col-md-2">
-											<MudIcon Icon="@Icons.Material.Filled.People" Color="Color.Primary" />
-										</MudBadge>
-									</td>
-									<td style="width:80px;border:solid;border-radius: 5% 100% 100% 5%;border-color:blue">
-										<MudBadge id="PeopleDo" Content="3" Overlap="false" Class="col-md-2">
-											<MudIcon Icon="@Icons.Material.Filled.PeopleOutline" Color="Color.Default" />
-										</MudBadge>
-									</td>
-									</th>
-								</table>
-							</div>
-							@* </MudCardContent> *@
-							<MudCardActions Class="col-md-2">
-								<div class="col-md-2">
-									<MudText>Wayne</MudText>
-									<MudSpacer />
-									<MudText Style="font-size:20px" Color="Color.Dark">Inventory Manager</MudText>
-								</div>
-							</MudCardActions>
-						</MudCard>
-					<ul>
-						<li>
-								<MudCard Style="align-items:center;box-shadow: 10px 10px 5px lightblue;border-radius: 5% 5% 5% 5%;width:revert-layer">
-									<MudCardHeader Style="height:180px;">
-										<MudAvatar Style="width:150px;height:180px;">
-											<MudImage Src="_content/MudBlazorProject.Shared/image/Solid.png"></MudImage>
-										</MudAvatar>
-									</MudCardHeader>
-									@* <MudCardContent Style="background-color:transparent;padding-top:-150px;"> *@
-									<div class="col-md-2" style="padding-top:-250px">
-										<table>
-											<th>
-											<td style="width:80px;border:solid;border-radius: 100% 5% 5% 100%;border-color:blue">
-												<MudBadge id="PeopleMost" Content="0" Overlap="false" Class="col-md-2">
-													<MudIcon Icon="@Icons.Material.Filled.People" Color="Color.Primary" />
-												</MudBadge>
-											</td>
-											<td style="width:80px;border:solid;border-radius: 5% 100% 100% 5%;border-color:blue">
-												<MudBadge id="PeopleDo" Content="3" Overlap="false" Class="col-md-2">
-													<MudIcon Icon="@Icons.Material.Filled.PeopleOutline" Color="Color.Default" />
-												</MudBadge>
-											</td>
-											</th>
-										</table>
-									</div>
-									@* </MudCardContent> *@
-									<MudCardActions Class="col-md-2">
-										<div class="col-md-2">
-											<MudText>Wayne</MudText>
-											<MudSpacer />
-											<MudText Style="font-size:20px" Color="Color.Dark">Inventory Supervisor</MudText>
-										</div>
-									</MudCardActions>
-								</MudCard>
-							<ul>
-								<li>
-									<a href="#">Html</a>
-									<ul>
-										<li>
-											<a href="#">Css</a>
-											<ul>
-												<li>
-													<a href="#">Jquery</a>
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a href="#">Graph</a>
-							<ul>
-								<li>
-									<a href="#">Image</a>
-									<ul>
-										<li>
-											<a href="#">Design</a>
-										</li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-				<li>
-						<MudText Style="background-color:blue;color:white;padding-top:-250px">Human Resource</MudText>
-						<MudCard Style="align-items:center;box-shadow: 10px 10px 5px lightblue;border-radius: 5% 5% 5% 5%;width:revert-layer">
-							<MudCardHeader Style="height:180px;">
-								<MudAvatar Style="width:150px;height:180px;">
-									<MudImage Src="_content/MudBlazorProject.Shared/image/Solid.png"></MudImage>
+							<MudCardContent>
+								<MudAvatar>
+									<MudImage Src="_content/MudBlazorProject.Shared/image/OIP.jpg"></MudImage>
 								</MudAvatar>
-							</MudCardHeader>
-							@* <MudCardContent Style="background-color:transparent;padding-top:-150px;"> *@
-							<div class="col-md-2" style="padding-top:-250px">
-								<table>
-									<th>
-									<td style="width:80px;border:solid;border-radius: 100% 5% 5% 100%;border-color:blue">
-										<MudBadge id="PeopleMost" Content="0" Overlap="false" Class="col-md-2">
-											<MudIcon Icon="@Icons.Material.Filled.People" Color="Color.Primary" />
-										</MudBadge>
-									</td>
-									<td style="width:80px;border:solid;border-radius: 5% 100% 100% 5%;border-color:blue">
-										<MudBadge id="PeopleDo" Content="3" Overlap="false" Class="col-md-2">
-											<MudIcon Icon="@Icons.Material.Filled.PeopleOutline" Color="Color.Default" />
-										</MudBadge>
-									</td>
-									</th>
-								</table>
-							</div>
-							@* </MudCardContent> *@
-							<MudCardActions Class="col-md-2">
-								<div class="col-md-2">
-									<MudText>Wayne</MudText>
-									<MudSpacer />
-									<MudText Style="font-size:20px" Color="Color.Dark">HR Manager</MudText>
-								</div>
-							</MudCardActions>
+								<MudText>Description</MudText>
+							</MudCardContent>
 						</MudCard>
-					<ul>
-						<li>
-							<a href="#">Category</a>
-							<ul>
-								<li>
-									<a href="#">Code</a>
-								</li>
-								<li>
-									<a href="#">Graph</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-				<li>
-						<MudText Style="background-color:blue;color:white;padding-top:-250px">R&D</MudText>
-						<MudCard Style="align-items:center;box-shadow: 10px 10px 5px lightblue;border-radius: 5% 5% 5% 5%;width:revert-layer">
-							<MudCardHeader Style="height:180px;">
-								<MudAvatar Style="width:150px;height:180px;">
-									<MudImage Src="_content/MudBlazorProject.Shared/image/Solid.png"></MudImage>
-								</MudAvatar>
-							</MudCardHeader>
-							@* <MudCardContent Style="background-color:transparent;padding-top:-150px;"> *@
-							<div class="col-md-2" style="padding-top:-250px">
-								<table>
-									<th>
-									<td style="width:80px;border:solid;border-radius: 100% 5% 5% 100%;border-color:blue">
-										<MudBadge id="PeopleMost" Content="0" Overlap="false" Class="col-md-2">
-											<MudIcon Icon="@Icons.Material.Filled.People" Color="Color.Primary" />
-										</MudBadge>
-									</td>
-									<td style="width:80px;border:solid;border-radius: 5% 100% 100% 5%;border-color:blue">
-										<MudBadge id="PeopleDo" Content="3" Overlap="false" Class="col-md-2">
-											<MudIcon Icon="@Icons.Material.Filled.PeopleOutline" Color="Color.Default" />
-										</MudBadge>
-									</td>
-									</th>
-								</table>
-							</div>
-							@* </MudCardContent> *@
-							<MudCardActions Class="col-md-2">
-								<div class="col-md-2">
-									<MudText>Wayne</MudText>
-									<MudSpacer />
-									<MudText Style="font-size:20px" Color="Color.Dark">Development Manager</MudText>
-								</div>
-							</MudCardActions>
-						</MudCard>
-					<ul>
-						<li>
-							<a href="#">Vcard</a>
+						</MudNavGroup>
+						<ul>
+							<li>
+								<a href="#">Code</a>
+								<ul>
+									<li>
+										<a href="#">Html</a>
+										<ul>
+											<li>
+												<a href="#">Css</a>
+												<ul>
+													<li>
+														<a href="#">Jquery</a>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">Graph</a>
+								<ul>
+									<li>
+										<a href="#">Image</a>
+										<ul>
+											<li>
+												<a href="#">Design</a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">Blog</a>
+						<ul>
+							<li>
+								<a href="#">Category</a>
+								<ul>
+									<li>
+										<a href="#">Code</a>
+									</li>
+									<li>
+										<a href="#">Graph</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">About</a>
+						<ul>
+							<li>
+								<a href="#">Vcard</a>
 
-						</li>
-						<li>
-							<a href="#">Map</a>
-						</li>
-					</ul>
-				</li>
-			</ul>
-		</li>
-	</ul>
-</MudNavMenu>
-<!-- END EDMO HTML (Happy Coding!)-->
+							</li>
+							<li>
+								<a href="#">Map</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</MudNavMenu>
 </MudStack>
 
 @code {
+	private bool _expanded = false;
 
 }
