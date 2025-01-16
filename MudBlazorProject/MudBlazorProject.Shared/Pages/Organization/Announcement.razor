@@ -1,8 +1,8 @@
 ﻿@page "/organization/announcement"
+@inject NavigationManager Navigation
+@using ViewModels.Personal
 
 <h3>Announcement</h3>
-
-
 @using System.Collections.ObjectModel
 
 <MudPaper draggable="true" Width="100%" Elevation="0">
@@ -39,10 +39,32 @@
     </MudChipSet>
     <MudSwitch @bind-Value="AutoExpand" Color="Color.Primary">AutoExpand</MudSwitch>
 </MudStack> *@
+
+<MudTreeView dir="ltr" ServerData="@GetOrganizationStructure" Items="@Children" Expanded="true" T="@EmployeeViewModel">
+    <ChildContent>
+        <MudTreeViewItem>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <MudAvatar Src="@context.Position" Size="Size.Medium" />
+                <div>
+                    <MudText Typo="Typo.body1" Bold="true">@context.Name</MudText>
+                    <MudText Typo="Typo.caption">@context.Role</MudText>
+                </div>
+            </div>
+            @if (context.Children != null && context.Children.Count > 0)
+            {
+                <MudTreeView Items="context.Children" T="@EmployeeViewModel" ChildContentField="Children">
+                </MudTreeView>
+            }
+        </MudTreeViewItem>
+    </ChildContent>
+</MudTreeView>
+
 @code {
     public MudTreeView<string> TreeView;
     public string SelectedValue = null;
     public bool AutoExpand = true;
+    private EmployeeViewModel organizationData;
+    private List<EmployeeViewModel> Children { get; set; }
 
     private List<TreeItemData<string>> InitialTreeItems { get; set; } = new();
     private List<TreeItemData<string>> ServerTreeItems { get; set; } = new();
@@ -50,7 +72,7 @@
     protected override void OnInitialized()
     {
         // MudTreeView initially only gets these top-level items
-        InitialTreeItems.Add(new TreeItemData<string> { Value = "All Mail", Icon = Icons.Material.Filled.Label, });
+        InitialTreeItems.Add(new TreeItemData<string> { Value = "All Mail", Icon = Icons.Material.Filled.Label});
         InitialTreeItems.Add(new TreeItemData<string> { Value = "Trash", Icon = Icons.Material.Filled.Delete });
 
         // LoadServerData will load from this hierarchy
@@ -122,4 +144,83 @@
         return null;
     }
 
+    // protected override void OnInitialized()
+    // {
+    //     organizationData = GetOrganizationStructure();
+    // }
+
+    private async Task<IReadOnlyCollection<EmployeeViewModel>> GetOrganizationStructure(EmployeeViewModel _vm)
+    {
+        // var ceo = new EmployeeViewModel("John Doe", "CEO", "https://www.example.com/images/john_doe.jpg");
+        // organizationData.Reports.Add(ceo);
+        // new EmployeeViewModel("John Doe", "CEO", "_content/MudBlazorProject.Shared/image/face3.jpg")),
+        // new EmployeeViewModel { Name = "Jane Smith", Position = "VP of Marketing", ImgUrl = "https://www.example.com/images/jane_smith.jpg" },
+        // new EmployeeViewModel { Name = "Michael Johnson", Position = "VP of Sales", ImgUrl = "https://www.example.com/images/michael_johnson.jpg" },
+        // new EmployeeViewModel { Name = "Alice Davis", Position = "Marketing Manager", ImgUrl = "https://www.example.com/images/alice_davis.jpg" },
+        // new EmployeeViewModel { Name = "Bob Brown", Position = "Digital Marketing Manager", ImgUrl = "https://www.example.com/images/bob_brown.jpg"},
+        // new EmployeeViewModel { Name = "Charlie White", Position = "Sales Manager", ImgUrl = "https://www.example.com/images/charlie_white.jpg" });
+        // return organizationData;
+
+        // var ceo = new EmployeeViewModel("John Doe", "CEO", "https://www.example.com/images/john_doe.jpg");
+        // var vp1 = new EmployeeViewModel("Jane Smith", "VP of Marketing", "https://www.example.com/images/jane_smith.jpg");
+        // var vp2 = new EmployeeViewModel("Michael Johnson", "VP of Sales", "https://www.example.com/images/michael_johnson.jpg");
+
+        // ceo.Reports.Add(vp1);
+        // ceo.Reports.Add(vp2);
+
+        // vp1.Reports.Add(new EmployeeViewModel("Alice Davis", "Marketing Manager", "https://www.example.com/images/alice_davis.jpg"));
+        // vp1.Reports.Add(new EmployeeViewModel("Bob Brown", "Digital Marketing Manager", "https://www.example.com/images/bob_brown.jpg"));
+        // vp2.Reports.Add(new EmployeeViewModel("Charlie White", "Sales Manager", "https://www.example.com/images/charlie_white.jpg"));
+        // return ceo;
+
+        // organizationData = new List<EmployeeViewModel>
+        // {
+        // new EmployeeViewModel
+        //     {
+        //         Name = "Alice Johnson",
+        //         Role = "CEO",
+        //         ImgUrl = "_content/MudBlazorProject.Shared/image/face3.jpg",
+        //         Children = new List<EmployeeViewModel>
+        //         {
+        //             new EmployeeViewModel
+        //             {
+        //                 Name = "Bob Smith",
+        //                 Role = "CTO",
+        //                 ImgUrl = "_content/MudBlazorProject.Shared/image/face3.jpg",
+        //                 Children = new List<EmployeeViewModel>
+        //                 {
+        //                     new EmployeeViewModel
+        //                     {
+        //                         Name = "Charlie Brown",
+        //                         Role = "Dev Team Lead",
+        //                         ImgUrl = "_content/MudBlazorProject.Shared/image/face3.jpg"
+        //                     },
+        //                     new EmployeeViewModel
+        //                     {
+        //                         Name = "Diana Prince",
+        //                         Role = "QA Manager",
+        //                         ImgUrl = "_content/MudBlazorProject.Shared/image/face3.jpg"
+        //                     }
+        //                 }
+        //             },
+        //             new EmployeeViewModel
+        //             {
+        //                 Name = "Eve Adams",
+        //                 Role = "CFO",
+        //                 ImgUrl = "_content/MudBlazorProject.Shared/image/face3.jpg",
+        //                 Children = new List<EmployeeViewModel>
+        //                 {
+        //                     new EmployeeViewModel
+        //                     {
+        //                         Name = "Frank Wright",
+        //                         Role = "Accountant",
+        //                         ImgUrl = "_content/MudBlazorProject.Shared/image/face3.jpg"
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+        // };
+        return organizationData;
+    }
 }
