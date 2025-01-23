@@ -11,7 +11,7 @@ namespace Domain.Abstract.Organization
         string Subject { get; set; }
         string Type { get; set; }
         DateTime StartDate { get; set; }
-        DateTime DateDate { get; set; }
+        DateTime EndDate { get; set; }
         DateTime LastDate { get; set; }
     }
 }

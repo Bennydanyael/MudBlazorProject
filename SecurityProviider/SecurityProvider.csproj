@@ -7,12 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.1" />
+    <None Remove="Service\EncryptDecrypt\1horxex0.3s5~" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\IdebtityProvider\IdentityProvider.csproj" />
-    <ProjectReference Include="..\IdentityDomain\IdentityDomain.csproj" />
+    <ProjectReference Include="..\Common\Common.csproj" />
   </ItemGroup>
 
 </Project>

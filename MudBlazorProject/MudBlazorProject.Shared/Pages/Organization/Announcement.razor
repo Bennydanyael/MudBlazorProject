@@ -39,7 +39,7 @@
     </MudChipSet>
     <MudSwitch @bind-Value="AutoExpand" Color="Color.Primary">AutoExpand</MudSwitch>
 </MudStack> *@
-
+@* 
 <MudTreeView dir="ltr" ServerData="@GetOrganizationStructure" Items="@Children" Expanded="true" T="@EmployeeViewModel">
     <ChildContent>
         <MudTreeViewItem>
@@ -57,7 +57,7 @@
             }
         </MudTreeViewItem>
     </ChildContent>
-</MudTreeView>
+</MudTreeView> *@
 
 @code {
     public MudTreeView<string> TreeView;
@@ -149,8 +149,8 @@
     //     organizationData = GetOrganizationStructure();
     // }
 
-    private async Task<IReadOnlyCollection<EmployeeViewModel>> GetOrganizationStructure(EmployeeViewModel _vm)
-    {
+    // private async Task<IReadOnlyCollection<EmployeeViewModel>> GetOrganizationStructure(EmployeeViewModel _vm)
+    // {
         // var ceo = new EmployeeViewModel("John Doe", "CEO", "https://www.example.com/images/john_doe.jpg");
         // organizationData.Reports.Add(ceo);
         // new EmployeeViewModel("John Doe", "CEO", "_content/MudBlazorProject.Shared/image/face3.jpg")),
@@ -221,6 +221,6 @@
         //         }
         //     }
         // };
-        return organizationData;
-    }
+        // return organizationData;
+    // }
 }
