@@ -16,8 +16,8 @@ namespace Service.Service.TokenHandler
         {
             _userAccountList = new List<UserAccountViewModel>
             {
-                new UserAccountViewModel{ Username = "Admin", Password = "Sabeso76", Role = "Administrator" },
-                new UserAccountViewModel{ Username = "User1", Password = "Sabeso76", Role = "User" }
+                new UserAccountViewModel{ Username = "Admin", Password = "Sabeso76",  },
+                new UserAccountViewModel{ Username = "User1", Password = "Sabeso76" }
             };
         }
 
@@ -33,7 +33,7 @@ namespace Service.Service.TokenHandler
             var _claimIdentity = new ClaimsIdentity(new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Name, _request.Username),
-                new Claim(ClaimTypes.Role, _userAccount.Role)
+                new Claim(ClaimTypes.Role, _userAccount.RoleId)
             });
 
             var _signCredentials = new SigningCredentials(new SymmetricSecurityKey(_tokenKey), SecurityAlgorithms.HmacSha256);

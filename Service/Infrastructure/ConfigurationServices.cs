@@ -1,5 +1,6 @@
 ﻿using Common.Abstract.SqlFactory;
 using Common.Common.SqlFactory;
+using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.DependencyInjection;
 using Service.Abstraction.Account;
 using Service.Abstraction.Organization;
@@ -7,11 +8,8 @@ using Service.Abstraction.TokenHandler;
 using Service.Service.Account;
 using Service.Service.Organization;
 using Service.Service.TokenHandler;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Providers.Initializers;
+using Providers.Abstraction.Context;
 
 namespace Service.Infrastructure
 {
@@ -21,6 +19,7 @@ namespace Service.Infrastructure
         {
             _service.AddScoped<IJWTTokenHandler, JWTTokenHandler>();
             _service.AddScoped<IAccountService, AccountService>();
+            _service.AddScoped<IDbInitializer, InitializerData>();
 
             _service.AddScoped<IOrgStructureService, OrgStructureService>();
 

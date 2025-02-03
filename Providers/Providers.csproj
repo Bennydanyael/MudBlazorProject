@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\IdebtityProvider\IdentityProvider.csproj" />
   </ItemGroup>
 
 </Project>

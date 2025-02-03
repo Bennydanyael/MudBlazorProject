@@ -11,5 +11,7 @@ namespace SecurityProvider.Abstract.GeneratorEngine
     {
         byte[] Encryption(byte[] _plaintext, RSAParameters _key, bool _isPadding);
         byte[] Decryption(byte[] _encrypted, RSAParameters _key, bool _isPadding);
+        string EncryptionString(string _plaintext, RSAParameters _key, bool _isPadding);
+        string DecryptionString(string _encrypted, RSAParameters _key, bool _isPadding);
     }
 }

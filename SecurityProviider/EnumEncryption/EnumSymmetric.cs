@@ -9,8 +9,10 @@ namespace SecurityProvider.EnumEncryption
 {
     public enum EnumSymmetric
     {
+        [Display(Name ="192")]
         AES192 = 1,
-        AES26 = 2,
+        [Display(Name = "256")]
+        AES256 = 2,
         RSA = 3,
     }
 }

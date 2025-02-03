@@ -7,6 +7,7 @@ using MudBlazorProject.Shared.Services;
 using MudBlazorProject.Shared.Services.Account;
 using MudBlazorProject.Web.Components;
 using MudBlazorProject.Web.Services;
+using Providers.Abstraction.Context;
 using Providers.DataProvider.Context;
 using Serilog;
 using Service.Abstraction.Organization;
@@ -78,6 +79,11 @@ builder.Host.UseSerilog((context, loggerConfig) =>
 builder.Services.AddSingleton<IFormFactor, FormFactor>();
 
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+    dbInitializer.InitializeSets();
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
